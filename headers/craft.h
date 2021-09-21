@@ -2,7 +2,7 @@
 
 typedef struct {
   const double height; // m
-  const double d;
+  const double length;
   const double m; // kg
   const double thrust; // kN
   const double v_Cd;

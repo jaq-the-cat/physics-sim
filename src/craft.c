@@ -57,12 +57,12 @@ double hThrust(Craft *craft) {
 }
 
 double vArea(Craft *craft) { // nose-engine
-  return CF(craft->d, craft->height);
+  return CF(craft->length, craft->height);
   /*return 0.4051111 * craft->angle + 2.44;*/
 }
 
 double hArea(Craft *craft) { // left-right
-  return CF(craft->height, craft->d);
+  return CF(craft->height, craft->length);
   /*return -0.4051111 * craft->angle + 38.9;*/
 }
 
