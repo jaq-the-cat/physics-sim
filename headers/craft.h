@@ -25,6 +25,7 @@ typedef struct {
 
 extern Craft rocket;
 
+double grav(Craft*);
 double vDrag(Craft*);
 double hDrag(Craft*);
 double vCl(Craft*);

@@ -2,6 +2,8 @@
 #include "physics.h"
 #include <math.h>
 
+#define E_RADIUS 6371000
+#define E_MASS 5.972e24
 #define P(x, y) (point) {x, y}
 #define F(fa, x) (fa.m*x - fa.a1 + fa.a2)
 
@@ -22,7 +24,7 @@ Craft rocket = {
   .Cl_90 = -.1,        // lift coefficient at 90deg
 
   // dynamic data
-  .angle = 90,
+  .angle = 0,
 };
 
 typedef struct {
@@ -45,7 +47,12 @@ funcArgs ffp(point p1, point p2) {
   };
 }
 
-// Equation oncstants
+// Gravity
+double grav(Craft *craft) {
+  return (G * E_MASS * craft->m) / pow(E_RADIUS + craft->y, 2);
+}
+
+// Equation constants
 double vCd(Craft *craft) { // top-down
   return CF(0, craft->v_Cd, 90, craft->h_Cd);
 }

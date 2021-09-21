@@ -1,7 +1,7 @@
 #include <math.h>
 #include "physics.h"
 
-const double atmo_density(const double h) {
+double atmo_density(double h) {
   // https://www.grc.nasa.gov/www/k-12/airplane/atmosmet.html
   double T, p;
   if (h < 11000) {
@@ -17,14 +17,14 @@ const double atmo_density(const double h) {
   return p / (.2869 * (T+273.1));
 }
 
-const double drag(const double Cd, const double v, double const h, const double A) {
+double drag(double Cd, double v, double h, double A) {
   return Cd * atmo_density(h) * (v*v/2) * A;
 }
 
-const double accToF(const double m, const double a) {
+double accToF(double m, double a) {
   return m*a;
 }
 
-const double fToAcc(const double m, const double F) {
+double fToAcc(double m, double F) {
   return F/m;
 }

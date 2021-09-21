@@ -2,8 +2,8 @@
 
 #define PI 3.141
 #define e 2.71828
-#define G 9.81
+#define G 6.674e-11
 
-const double atmo_density(const double h);
-const double drag(const double Cd, const double v, double const h, const double A);
-const double fToAcc(const double m, const double F);
+double atmo_density(double h);
+double drag(double Cd, double v, double h, double A);
+double fToAcc(double m, double F);

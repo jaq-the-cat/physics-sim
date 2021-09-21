@@ -18,7 +18,7 @@ void print() {
   printw("  h_Cd:       %f\n", rocket.h_Cd);
   printw("  Cl_15:      %f\n", rocket.Cl_15);
   printw("  Cl_90:      %f\n", rocket.Cl_90);
-  printw("  Fg:         %f N\n", rocket.m*G);
+  printw("  Fg:         %f N\n", grav(&rocket));
   printw("\n");
   printw("  x:          %f km\n", rocket.x);
   printw("  y:          %f km\n", rocket.y);
@@ -48,7 +48,7 @@ void update() {
   rocket.v_velocity += fToAcc(rocket.m,
     vThrust(&rocket)
     + vdrag
-    - rocket.m*G
+    - grav(&rocket)
   );
   rocket.h_velocity += fToAcc(rocket.m,
       hThrust(&rocket)
