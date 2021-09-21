@@ -18,9 +18,9 @@ typedef struct {
 
 extern Craft delta2;
 
-double vDrag();
-double hDrag();
-double vThrust();
-double hThrust();
-void left();
-void right();
+double vDrag(Craft*);
+double hDrag(Craft*);
+double vThrust(Craft*);
+double hThrust(Craft*);
+void left(Craft*);
+void right(Craft*);
