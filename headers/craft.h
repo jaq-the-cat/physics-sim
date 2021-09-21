@@ -23,7 +23,7 @@ typedef struct {
   double h_velocity;       // m/s
 } Craft;
 
-extern Craft delta2;
+extern Craft rocket;
 
 double vDrag(Craft*);
 double hDrag(Craft*);

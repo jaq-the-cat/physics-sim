@@ -7,10 +7,10 @@
 
 #define CF(deg1, atdeg1, deg2, atdeg2) (F(ffp(P(deg1, atdeg1), P(deg2, atdeg2)), craft->angle))
 
-Craft delta2 = {
+Craft rocket = {
   // static data
   .tdArea = 2.44*PI,   // m²
-  .lrArea = 38.9*2.44, // m²
+  .lrArea = 38.9*2.44 + 2.5, // m²
   .m = 4470,           // kg
   .thrust = 970,       // kN
   .v_wingArea = 0,  // m²
@@ -22,7 +22,7 @@ Craft delta2 = {
   .Cl_90 = -.1,        // lift coefficient at 90deg
 
   // dynamic data
-  .angle = 0,          // vertical
+  .angle = 90,
 };
 
 typedef struct {
@@ -34,7 +34,7 @@ typedef struct {
 } funcArgs;
 
 funcArgs ffp(point p1, point p2) {
-  const double m = fabs(p2.y-p1.y)/fabs(p2.x-p1.x);
+  const double m = (p2.y-p1.y)/(p2.x-p1.x);
   // y - (p1.y) = m * (x - p1.x)
   // y = m * (x - p1.x) + (p1.y)
   // y = m*x - m*p1.x + p1.y
