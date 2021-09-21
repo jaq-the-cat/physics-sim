@@ -8,27 +8,34 @@
 
 void print() {
   clear();
-  printw("STATS:\n");
-  printw("  height:     %f m\n", delta2.height);
-  printw("  diameter:   %f m\n", delta2.d);
+  printw("  t-d A:      %f m²\n", delta2.tdArea);
+  printw("  l-r A:      %f m²\n", delta2.lrArea);
+  printw("  mass:       %f kg\n", delta2.m);
   printw("  thrust:     %f kN\n", delta2.thrust);
+  printw("  v_wingArea: %f m²\n", delta2.v_wingArea);
+  printw("  h_wingArea: %f m²\n", delta2.h_wingArea);
   printw("  v_Cd:       %f\n", delta2.v_Cd);
   printw("  h_Cd:       %f\n", delta2.h_Cd);
+  printw("  Cl_15:      %f\n", delta2.Cl_15);
+  printw("  Cl_90:      %f\n", delta2.Cl_90);
   printw("  Fg:         %f N\n", delta2.m*G);
   printw("\n");
-  printw("DATA:\n");
   printw("  x:          %f km\n", delta2.x);
   printw("  y:          %f km\n", delta2.y);
-  printw("  angle:      %f deg\n", delta2.angle);
   printw("  v_velocity: %f m/s\n", delta2.v_velocity);
   printw("  h_velocity: %f m/s\n", delta2.h_velocity);
   printw("\n");
+  printw("  angle:      %f deg\n", delta2.angle);
   printw("  vDrag:      %f N\n", vDrag(&delta2));
   printw("  hDrag:      %f N\n", hDrag(&delta2));
-  printw("  vThrust:    %f N\n", vThrust(&delta2));
-  printw("  hThrust:    %f N\n", hThrust(&delta2));
+  printw("  vThrust:    %f kN\n", vThrust(&delta2)/1000.);
+  printw("  hThrust:    %f kN\n", hThrust(&delta2)/1000.);
+  printw("  vLift:      %f N\n", vLift(&delta2));
+  printw("  hLift:      %f N\n", hLift(&delta2));
   printw("\n");
-  printw("atmo:  %f\n", atmo_density(delta2.y));
+  printw("  vCl:        %f\n", vCl(&delta2));
+  printw("  hCl:        %f\n", hCl(&delta2));
+  printw("  atmo:       %f\n", atmo_density(delta2.y));
 }
 
 void update() {
