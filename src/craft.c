@@ -9,7 +9,7 @@
 
 Craft delta2 = {
   .height = 38.9,
-  .d = 2.44,
+  .length = 2.44,
   .m = 4470,
   .thrust = 970,
   .v_Cd = 0.35,
