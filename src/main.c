@@ -25,7 +25,7 @@ void print() {
   printw("  v_velocity: %f m/s\n", delta2.v_velocity);
   printw("  h_velocity: %f m/s\n", delta2.h_velocity);
   printw("\n");
-  printw("  angle:      %f deg\n", delta2.angle);
+  printw("  angle:      %f°\n", delta2.angle);
   printw("  vDrag:      %f N\n", vDrag(&delta2));
   printw("  hDrag:      %f N\n", hDrag(&delta2));
   printw("  vThrust:    %f kN\n", vThrust(&delta2)/1000.);
