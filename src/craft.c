@@ -21,10 +21,12 @@ Craft rocket = {
   .v_Cd = .35,         // drag coeff at 0deg
   .h_Cd = 1.1,         // drag coeff at 90deg
   .Cl_15 = .4,         // lift coefficient at 15deg
-  .Cl_90 = -.1,        // lift coefficient at 90deg
+  .Cl_90 = .05,        // lift coefficient at 90deg
 
   // dynamic data
-  .angle = 0,
+  .angle = 90,
+
+  .x = 0, .y = 0,
 };
 
 typedef struct {
@@ -100,11 +102,11 @@ double hThrust(Craft *craft) {
 }
 
 double vLift(Craft *craft) {
-  return vCl(craft) * (atmo_density(craft->y) * craft->v_velocity*craft->v_velocity)/2 * craft->v_wingArea;
+  return vCl(craft) * (atmo_density(craft->y) * craft->v_velocity*craft->v_velocity)/2 * vWingArea(craft);
 }
 
 double hLift(Craft *craft) {
-  return hCl(craft) * (atmo_density(craft->y) * craft->h_velocity*craft->h_velocity)/2 * craft->h_wingArea;
+  return hCl(craft) * (atmo_density(craft->y) * craft->h_velocity*craft->h_velocity)/2 * hWingArea(craft);
 }
 
 double vDrag(Craft *craft) { // vertical drag

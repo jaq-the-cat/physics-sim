@@ -18,7 +18,7 @@ void print() {
   printw("  h_Cd:       %f\n", rocket.h_Cd);
   printw("  Cl_15:      %f\n", rocket.Cl_15);
   printw("  Cl_90:      %f\n", rocket.Cl_90);
-  printw("  Fg:         %f N\n", grav(&rocket));
+  printw("  Fg:         %f kN\n", grav(&rocket)/1000);
   printw("\n");
   printw("  x:          %f km\n", rocket.x);
   printw("  y:          %f km\n", rocket.y);
@@ -26,16 +26,18 @@ void print() {
   printw("  h_velocity: %f m/s\n", rocket.h_velocity);
   printw("\n");
   printw("  angle:      %f°\n", rocket.angle);
-  printw("  vDrag:      %f N\n", vDrag(&rocket));
-  printw("  hDrag:      %f N\n", hDrag(&rocket));
   printw("  vThrust:    %f kN\n", vThrust(&rocket)/1000.);
   printw("  hThrust:    %f kN\n", hThrust(&rocket)/1000.);
   printw("  vLift:      %f N\n", vLift(&rocket));
   printw("  hLift:      %f N\n", hLift(&rocket));
+  printw("  vDrag:      %f kN\n", vDrag(&rocket)/1000);
+  printw("  hDrag:      %f kN\n", hDrag(&rocket)/1000);
   printw("\n");
   printw("  vCl:        %f\n", vCl(&rocket));
   printw("  hCl:        %f\n", hCl(&rocket));
   printw("  atmo:       %f\n", atmo_density(rocket.y));
+  printw("  vArea:      %f\n", vArea(&rocket));
+  printw("  hArea:      %f\n", hArea(&rocket));
 }
 
 void update() {
@@ -45,18 +47,24 @@ void update() {
     vdrag *= -1;
   if (rocket.h_velocity < 0)
     hdrag *= -1;
-  rocket.v_velocity += fToAcc(rocket.m,
+
+  double vacc = fToAcc(rocket.m,
     vThrust(&rocket)
     + vdrag
     - grav(&rocket)
   );
-  rocket.h_velocity += fToAcc(rocket.m,
-      hThrust(&rocket)
-      + hdrag
-      + hLift(&rocket)
-    );
-  /*delta2.y += delta2.v_velocity;*/
-  /*delta2.x += delta2.h_velocity;*/
+
+  double hacc = fToAcc(rocket.m,
+    hThrust(&rocket)
+    + hdrag
+    + hLift(&rocket)
+  );
+  printw("vacc: %f\n", vacc);
+  printw("hacc: %f\n", hacc);
+  rocket.v_velocity += vacc;
+  rocket.h_velocity += hacc;
+  /*rocket.y += rocket.v_velocity;*/
+  /*rocket.x += rocket.h_velocity;*/
 }
 
 int main(int argc, char* argv[]) {

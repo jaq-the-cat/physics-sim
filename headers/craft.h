@@ -30,6 +30,8 @@ double vDrag(Craft*);
 double hDrag(Craft*);
 double vCl(Craft*);
 double hCl(Craft*);
+double vArea(Craft*);
+double hArea(Craft*);
 double vThrust(Craft*);
 double hThrust(Craft*);
 double vLift(Craft*);
